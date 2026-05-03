@@ -19,8 +19,8 @@ const Ic = {
 };
 
 // ── Stepper ───────────────────────────────────────────────────────────────────
-function Stepper({ id, label, sub, val, min, max, onChange, disabled }: {
-  id: string; label: string; sub: string; val: number;
+function Stepper({ label, sub, val, min, max, onChange, disabled }: {
+  label: string; sub: string; val: number;
   min: number; max: number; onChange: (v: number) => void; disabled?: boolean;
 }) {
   const bump = (d: number) => onChange(Math.min(max, Math.max(min, val + d)));
@@ -181,8 +181,8 @@ export default function App() {
 
               {/* Steppers */}
               <div style={{ display:'grid',gridTemplateColumns:'1fr 1fr',gap:10,marginBottom:18 }}>
-                <Stepper id="cols" label="Columns" sub="across" val={cfg.cols} min={1} max={6} onChange={v => patch({cols:v})} disabled={isProcessing} />
-                <Stepper id="rows" label="Rows" sub="per col" val={cfg.rows} min={1} max={10} onChange={v => patch({rows:v})} disabled={isProcessing} />
+                <Stepper label="Columns" sub="across" val={cfg.cols} min={1} max={6} onChange={v => patch({cols:v})} disabled={isProcessing} />
+                <Stepper label="Rows" sub="per col" val={cfg.rows} min={1} max={10} onChange={v => patch({rows:v})} disabled={isProcessing} />
               </div>
 
               <div className="divider" style={{marginBottom:16}} />

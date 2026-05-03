@@ -116,7 +116,7 @@ async function renderPageToImageData(
   const ctx = canvas.getContext('2d')!;
   ctx.fillStyle = '#ffffff';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
-  await page.render({ canvasContext: ctx, viewport: scaledViewport }).promise;
+  await page.render({ canvasContext: ctx, canvas, viewport: scaledViewport }).promise;
 
   return createImageBitmap(canvas);
 }
@@ -217,7 +217,7 @@ export async function renderThumbnails(pdfBytes: ArrayBuffer, maxPages = 18): Pr
     const ctx = canvas.getContext('2d')!;
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    await page.render({ canvasContext: ctx, viewport }).promise;
+    await page.render({ canvasContext: ctx, canvas, viewport }).promise;
     thumbs.push(canvas.toDataURL('image/jpeg', 0.8));
   }
   return thumbs;
